@@ -168,6 +168,7 @@ dd {
 
 .signed-banner {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
   padding: 14px 28px;
   border-bottom: 1px solid rgba(15, 107, 73, 0.18);
@@ -294,9 +295,9 @@ canvas {
   display: none !important;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 860px) {
   .shell {
-    width: min(100vw - 24px, 920px);
+    width: min(calc(100vw - 24px), 920px);
     padding: 24px 0;
   }
 
@@ -308,6 +309,12 @@ canvas {
   .contract-summary {
     grid-template-columns: 1fr;
     gap: 18px;
+  }
+}
+
+@media (max-width: 720px) {
+  .masthead {
+    display: grid;
   }
 
   .contract-summary,
@@ -325,7 +332,12 @@ canvas {
   }
 
   h1 {
-    font-size: 34px;
-    line-height: 1.04;
+    font-size: 30px;
+    line-height: 1.08;
+  }
+
+  h2 {
+    font-size: 24px;
+    line-height: 1.16;
   }
 }

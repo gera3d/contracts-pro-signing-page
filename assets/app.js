@@ -54,6 +54,10 @@ function showOnly(section) {
   section.classList.remove("hidden");
 }
 
+function hideSections() {
+  [els.empty, els.error, els.card].forEach((el) => el.classList.add("hidden"));
+}
+
 function setFormStatus(message, state = "") {
   els.formStatus.textContent = message;
   els.formStatus.className = `form-status ${state}`.trim();
@@ -105,6 +109,7 @@ function renderRequest(row) {
 
 async function loadRequest() {
   const token = parseToken();
+  hideSections();
   if (!token) {
     setChip("Missing link");
     showOnly(els.empty);
@@ -115,7 +120,11 @@ async function loadRequest() {
     const data = await rpc("contracts_pro_view_signing_request", {
       p_token: token,
     });
-    renderRequest(firstRow(data));
+    const row = firstRow(data);
+    if (!row) {
+      throw new Error("This signing request was not found.");
+    }
+    renderRequest(row);
     setFormStatus("Signing request loaded.");
   } catch (error) {
     setChip("Unavailable");

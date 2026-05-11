@@ -7,11 +7,20 @@
   </head>
   <body>
     <script>
-      const path = window.location.pathname.replace(/^\/+/, "");
-      if (path.startsWith("sign/")) {
-        window.location.replace(`${window.location.origin}/#/` + path);
+      const parts = window.location.pathname.split("/").filter(Boolean);
+      const signIndex = parts.indexOf("sign");
+      if (signIndex !== -1 && parts[signIndex + 1]) {
+        const baseParts = parts.slice(0, signIndex);
+        const basePath = baseParts.length ? `/${baseParts.join("/")}/` : "/";
+        const token = parts[signIndex + 1];
+        window.location.replace(
+          `${window.location.origin}${basePath}#/sign/${encodeURIComponent(token)}`
+        );
       } else {
-        window.location.replace(window.location.origin);
+        const basePath = parts[0] === "contracts-pro-signing-page"
+          ? "/contracts-pro-signing-page/"
+          : "/";
+        window.location.replace(`${window.location.origin}${basePath}`);
       }
     </script>
   </body>
