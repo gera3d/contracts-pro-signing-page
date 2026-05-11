@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>Contracts Pro Signing</title>
+    <link rel="stylesheet" href="./assets/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="masthead" aria-labelledby="page-title">
+        <div>
+          <p class="brand">Contracts Pro</p>
+          <h1 id="page-title">Review and sign</h1>
+        </div>
+        <div class="status-chip" id="status-chip">Loading</div>
+      </section>
+
+      <section class="notice hidden" id="empty-state">
+        <h2>Signing link needed</h2>
+        <p>Open the signing link from your contract request to continue.</p>
+      </section>
+
+      <section class="notice hidden" id="error-state" role="alert">
+        <h2>Could not load this request</h2>
+        <p id="error-message">Please check the link and try again.</p>
+      </section>
+
+      <section class="contract-card hidden" id="signing-card" aria-live="polite">
+        <div class="contract-summary">
+          <div>
+            <span class="eyeline">Contract</span>
+            <h2 id="contract-title">Contract</h2>
+            <p id="contract-number"></p>
+          </div>
+          <dl>
+            <div>
+              <dt>Signer</dt>
+              <dd id="signer-name"></dd>
+            </div>
+            <div>
+              <dt>Email</dt>
+              <dd id="signer-email"></dd>
+            </div>
+            <div>
+              <dt>Role</dt>
+              <dd id="signer-role"></dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="signed-banner hidden" id="signed-banner">
+          <strong>Signed</strong>
+          <span>This request has already been completed.</span>
+        </div>
+
+        <form id="signature-form" class="signature-form">
+          <label class="field">
+            <span>Typed legal name</span>
+            <input id="typed-name" name="typed-name" autocomplete="name" required />
+          </label>
+
+          <div class="signature-block">
+            <div class="signature-heading">
+              <label for="signature-pad">Signature</label>
+              <button class="text-button" type="button" id="clear-signature">Clear</button>
+            </div>
+            <canvas id="signature-pad" width="960" height="320" aria-label="Draw your signature"></canvas>
+            <p class="hint">Use your mouse, trackpad, or finger to sign inside the box.</p>
+          </div>
+
+          <label class="consent">
+            <input id="consent" type="checkbox" required />
+            <span>I agree to sign this contract electronically and understand this action records my signature.</span>
+          </label>
+
+          <button class="primary-button" id="submit-signature" type="submit" disabled>
+            Complete signature
+          </button>
+          <p class="form-status" id="form-status" role="status"></p>
+        </form>
+      </section>
+    </main>
+
+    <script src="./assets/app.js" type="module"></script>
+  </body>
+</html>

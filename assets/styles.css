@@ -1,0 +1,331 @@
+:root {
+  --background: #f4f1ea;
+  --surface: #fffdfa;
+  --surface-strong: #ffffff;
+  --text: #1f2933;
+  --muted: #64707d;
+  --border: #d8d1c5;
+  --accent: #1f5f55;
+  --accent-strong: #174b43;
+  --danger: #b42318;
+  --success: #0f6b49;
+  --shadow: 0 22px 60px rgba(31, 41, 51, 0.11);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background:
+    linear-gradient(135deg, rgba(31, 95, 85, 0.11), transparent 32rem),
+    var(--background);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.shell {
+  width: min(920px, calc(100vw - 32px));
+  margin: 0 auto;
+  padding: 42px 0;
+}
+
+.masthead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.masthead > *,
+.contract-summary > * {
+  min-width: 0;
+}
+
+.brand {
+  margin: 0 0 8px;
+  color: var(--accent);
+  font-size: 15px;
+  font-weight: 750;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 0;
+  font-size: clamp(34px, 6vw, 56px);
+  line-height: 0.96;
+  letter-spacing: 0;
+  overflow-wrap: anywhere;
+}
+
+h2 {
+  margin-bottom: 8px;
+  font-size: 28px;
+  line-height: 1.12;
+  letter-spacing: 0;
+  overflow-wrap: anywhere;
+}
+
+.status-chip {
+  flex: 0 0 auto;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.68);
+  padding: 8px 13px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.status-chip.signed {
+  border-color: rgba(15, 107, 73, 0.24);
+  background: rgba(15, 107, 73, 0.1);
+  color: var(--success);
+}
+
+.notice,
+.contract-card {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.notice {
+  padding: 28px;
+}
+
+.notice p {
+  margin-bottom: 0;
+  color: var(--muted);
+}
+
+.contract-card {
+  overflow: hidden;
+}
+
+.contract-summary {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(260px, 0.9fr);
+  gap: 28px;
+  padding: 28px;
+  border-bottom: 1px solid var(--border);
+}
+
+.eyeline {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 750;
+  text-transform: uppercase;
+}
+
+#contract-number {
+  margin-bottom: 0;
+  color: var(--muted);
+}
+
+dl {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+}
+
+dl div {
+  display: grid;
+  grid-template-columns: 92px minmax(0, 1fr);
+  gap: 12px;
+}
+
+dt {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+dd {
+  min-width: 0;
+  margin: 0;
+  overflow-wrap: anywhere;
+  font-weight: 650;
+}
+
+.signed-banner {
+  display: flex;
+  gap: 10px;
+  padding: 14px 28px;
+  border-bottom: 1px solid rgba(15, 107, 73, 0.18);
+  background: rgba(15, 107, 73, 0.09);
+  color: var(--success);
+}
+
+.signature-form {
+  display: grid;
+  gap: 22px;
+  padding: 28px;
+}
+
+.field {
+  display: grid;
+  gap: 8px;
+  font-weight: 700;
+}
+
+.field input {
+  width: 100%;
+  border: 1px solid #a8b1bc;
+  border-radius: 7px;
+  background: var(--surface-strong);
+  padding: 13px 14px;
+  color: var(--text);
+  font-size: 17px;
+}
+
+.field input:focus,
+.consent input:focus,
+canvas:focus {
+  outline: 3px solid rgba(31, 95, 85, 0.2);
+  outline-offset: 2px;
+}
+
+.signature-block {
+  display: grid;
+  gap: 8px;
+}
+
+.signature-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-weight: 700;
+}
+
+.text-button {
+  border: 0;
+  background: transparent;
+  color: var(--accent);
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 750;
+}
+
+canvas {
+  width: 100%;
+  height: 180px;
+  border: 1px solid #a8b1bc;
+  border-radius: 7px;
+  background: var(--surface-strong);
+  cursor: crosshair;
+  touch-action: none;
+}
+
+.hint,
+.form-status {
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  color: #303b46;
+  line-height: 1.45;
+}
+
+.consent input {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  margin-top: 2px;
+}
+
+.primary-button {
+  width: fit-content;
+  min-width: 196px;
+  border: 0;
+  border-radius: 7px;
+  background: var(--accent);
+  color: white;
+  cursor: pointer;
+  padding: 13px 18px;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.primary-button:hover:not(:disabled) {
+  background: var(--accent-strong);
+}
+
+.primary-button:disabled {
+  background: #a3adb6;
+  cursor: default;
+}
+
+.form-status.success {
+  color: var(--success);
+  font-weight: 750;
+}
+
+.form-status.error,
+.notice#error-state {
+  color: var(--danger);
+}
+
+.hidden {
+  display: none !important;
+}
+
+@media (max-width: 720px) {
+  .shell {
+    width: min(100vw - 24px, 920px);
+    padding: 24px 0;
+  }
+
+  .masthead,
+  .contract-summary {
+    display: grid;
+  }
+
+  .contract-summary {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .contract-summary,
+  .signature-form {
+    padding: 20px;
+  }
+
+  dl div {
+    grid-template-columns: 1fr;
+    gap: 3px;
+  }
+
+  .primary-button {
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 34px;
+    line-height: 1.04;
+  }
+}
