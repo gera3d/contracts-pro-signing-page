@@ -25,6 +25,7 @@ The page calls these public RPCs with the Supabase anon key:
 
 - `contracts_pro_view_signing_request`
 - `contracts_pro_submit_signature`
+- `contracts_pro_get_signing_request_status`
 
 Do not put a service-role key in this repo. The anon key is expected in browser code; the signing token gates request access.
 
