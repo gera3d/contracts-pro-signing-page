@@ -227,8 +227,30 @@ async function submitSignature(event) {
     renderRequest({ ...request, ...submitted, status: submitted.status || "Signed" });
     setFormStatus("Signed. You can close this page.", "success");
   } catch (error) {
-    setFormStatus(cleanError(error), "error");
+    const message = cleanError(error);
+    if (message.toLowerCase().includes("unavailable")) {
+      const recovered = await recoverSignedRequest(token);
+      if (recovered) return;
+    }
+    setFormStatus(message, "error");
     validateForm();
+  }
+}
+
+async function recoverSignedRequest(token) {
+  try {
+    const latest = firstRow(
+      await rpc("contracts_pro_get_signing_request_status", {
+        p_token: token,
+      }),
+    );
+    if (latest?.status !== "Signed") return false;
+
+    renderRequest({ ...request, ...latest });
+    setFormStatus("Signed. You can close this page.", "success");
+    return true;
+  } catch {
+    return false;
   }
 }
 
